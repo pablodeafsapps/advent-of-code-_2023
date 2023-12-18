@@ -45,4 +45,4 @@ private fun weightedSum(acc: Int = 0, hits: Int): Int =
         else -> 2 * weightedSum(acc, hits - 1)
     }
 
-data class ScratchCard(val winningNumbers: Set<Int>, val ownedNumbers: Set<Int>)
+private data class ScratchCard(val winningNumbers: Set<Int>, val ownedNumbers: Set<Int>)

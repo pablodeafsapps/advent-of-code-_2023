@@ -1,5 +1,6 @@
 package org.deafsapps.adventofcode.day01.part02
 
+import org.deafsapps.adventofcode.day01.part01.concatFirstAndLastDigit
 import java.io.File
 import java.util.Scanner
 
@@ -16,7 +17,7 @@ fun main() {
     println(sum)
 }
 
-fun String.formatNonNumericDigits(): String = lowercase().replace(regex = allDigitsRegex) { matchResult ->
+private fun String.formatNonNumericDigits(): String = lowercase().replace(regex = allDigitsRegex) { matchResult ->
     when (matchResult.value) {
         "zero" -> "zeroo"
         "one" -> "onee"
@@ -32,7 +33,7 @@ fun String.formatNonNumericDigits(): String = lowercase().replace(regex = allDig
     }
 }
 
-fun String.parseDigits(): String = lowercase().replace(regex = allDigitsRegex) { matchResult ->
+private fun String.parseDigits(): String = lowercase().replace(regex = allDigitsRegex) { matchResult ->
     when (matchResult.value) {
         "zero" -> "0"
         "one" -> "1"
@@ -48,11 +49,5 @@ fun String.parseDigits(): String = lowercase().replace(regex = allDigitsRegex) {
     }
 }
 
-val allDigitsRegex: Regex =
+private val allDigitsRegex: Regex =
     """zero|one|two|three|four|five|six|seven|eight|nine|""".toRegex()
-
-fun concatFirstAndLastDigit(line: String): Int? {
-    val firstDigit = line.find { it.isDigit() }?.toString()
-    val lastDigit = line.reversed().find { it.isDigit() }?.toString()
-    return (firstDigit + lastDigit).toIntOrNull()
-}
